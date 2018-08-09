@@ -2,9 +2,17 @@
 
 volume=20
 
-scriptFile=/home/alxminyaev/Projects/eltex_course/labs_linux_networks/task3_Alarm/test.sh
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+me=`basename "$0"`
+
+scriptFile="$DIR/$me"
+
 music=/home/alxminyaev/Projects/eltex_course/labs_linux_networks/task3_Alarm/sounds/Cool-alarm-tone-notification-sound.mp3
+
+
 cronFile=cron.txt
+
 param=$1
 
 
@@ -30,6 +38,9 @@ set_time(){
             exit 10
         fi
     echo $tm
+    echo "Input path to file: "
+    read music
+    
 }
 
 case $param in
@@ -49,5 +60,7 @@ case $param in
     *)
         ;;
 esac
+
+echo $scriptFile
 
 
