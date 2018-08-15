@@ -8,8 +8,14 @@ me=`basename "$0"`
 
 scriptFile="$DIR/$me"
 
-music=/home/alxminyaev/Projects/eltex_course/labs_linux_networks/task3_Alarm/sounds/Cool-alarm-tone-notification-sound.mp3
+tmpMusic=/home/alxminyaev/Projects/eltex_course/labs_linux_networks/task3_Alarm/sounds/Cool-alarm-tone-notification-sound.mp3
 
+music=$2
+
+if [ -z $music ]
+    then
+    music=$tmpMusic
+fi
 
 cronFile=cron.txt
 
@@ -41,12 +47,13 @@ set_time(){
     echo "Input path to file: "
     read music
     
+    
 }
 
 case $param in
     "")
         set_time
-        echo "$minutes $hours * * * $scriptFile -on" > $cronFile
+        echo "$minutes $hours * * * $scriptFile -on $music" > $cronFile
         crontab $cronFile
         #sudo rtcwake -m mem -t $date
         ;;
@@ -61,6 +68,5 @@ case $param in
         ;;
 esac
 
-echo $scriptFile
 
 
