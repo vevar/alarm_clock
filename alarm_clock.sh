@@ -63,6 +63,9 @@ addNewAlarm(){
 
     crontab -l > $cronFile
     echo "$minutes $hours * * * $scriptFile -on $music" >> $cronFile
+    crontab $cronFile
+    rm $cronFile
+
 }
 
 for (( arg=1; arg<=$#; arg++))
@@ -85,6 +88,7 @@ do
                 onAlarm ${!param}
                 ;;
             *)
+                echo "Incorrect parametrs"
                 ;;
         esac
     fi
