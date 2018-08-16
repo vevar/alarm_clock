@@ -1,1 +1,0 @@
-44 11 * * * /home/alxminyaev/Projects/eltex_course/labs_linux_networks/task3_Alarm/alarm_clock.sh -on 
